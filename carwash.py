@@ -1,16 +1,9 @@
 
-# steps:
-# which carwash program you choose?
-# program is over, choose another or end?
-# cash counter
-# limits
-
-from traceback import print_exc
-
+# Carwash app
 
 class Carwash():
 
-    # limits
+    # programs and their data
     programs = {
         "1":{
             "name": "Pre-washing",
@@ -42,11 +35,14 @@ class Carwash():
         }
     }
 
+    # counting the consumed materials and the price
+
     price = 0
     time = 0
     water = 0
     foam = 0
 
+    # Lets choose the right program for washing our car
     def program_choice(self):
 
         self.choice = input(f"Which program do you choose: 1 - Pre-washing, 2 - Pressure washing, 3 - active foam or 4 - Rinsing")
@@ -57,6 +53,7 @@ class Carwash():
 
             self.choice = input("Which program do you choose: 1 - Pre-washing, 2 - Pressure washing, 3 - active foam or 4 - Rinsing")
 
+    # Counting the consumption for each program
     def counter(self):
 
         if  self.choice == '1':
@@ -80,6 +77,8 @@ class Carwash():
             self.foam += 0
             self.price += 1
 
+
+    # Summarize our washing session
     def summary(self):
 
         print(f"You have used {self.water} liter of water, {round(self.foam,2)} liter of foam in {self.time} seconds.")
@@ -103,6 +102,7 @@ class Carwash():
 
         print("Thank you for choosing us! Have a nice day!")
 
+    # Making further choices available
     def next_program(self):
 
         print("Your washing session is over!")
