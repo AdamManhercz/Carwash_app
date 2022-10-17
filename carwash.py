@@ -1,7 +1,7 @@
 
 # Carwash app
 
-class Carwash():
+class Carwash:
 
     # programs and their data
     programs = {
@@ -45,7 +45,7 @@ class Carwash():
     # Lets choose the right program for washing our car
     def program_choice(self):
 
-        self.choice = input(f"Which program do you choose: 1 - Pre-washing, 2 - Pressure washing, 3 - active foam or 4 - Rinsing")
+        self.choice = input("Which program do you choose: 1 - {}, 2 - {}, 3 - {} or 4 - {}:".format(self.programs["1"]["name"], self.programs["2"]["name"], self.programs["3"]["name"], self.programs["4"]["name"] ))
         
         while self.choice not in {'1', '2', '3', '4'}:
 
@@ -83,12 +83,12 @@ class Carwash():
 
         print(f"You have used {self.water} liter of water, {round(self.foam,2)} liter of foam in {self.time} seconds.")
         print(f"Your total: {self.price}$.")
-        total =  int(input("Please insert your cash:"))
+        total =  float(input("Please insert your cash:"))
 
         if total < self.price:
             leftover =  self.price - total
             
-            left_over = int(input(f"You have left {leftover}$. Please pay the leftover amount!"))
+            left_over = float(input(f"You have left {leftover}$. Please pay the leftover amount!"))
 
             if left_over > leftover:
                 change_left = left_over - leftover
@@ -101,6 +101,7 @@ class Carwash():
             print("Please, don't forget your change!")
 
         print("Thank you for choosing us! Have a nice day!")
+        print("Bye!")
 
     # Making further choices available
     def next_program(self):
@@ -117,14 +118,14 @@ class Carwash():
             print(f"You have used {self.water} liter of water, {round(self.foam,2)} liter of foam in {self.time} seconds.")
             print(f"Your total: {self.price}$.")  
 
-            Carwash.program_choice(self)
-            Carwash.counter(self)
-            Carwash.next_program(self) 
+            self.program_choice()
+            self.counter()
+            self.next_program() 
 
         elif next == "N":
 
             print("You have finished, your car is shining!")
-            Carwash.summary(self)
+            self.summary()
 
 
 carwash = Carwash()
