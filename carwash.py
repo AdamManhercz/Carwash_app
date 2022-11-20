@@ -19,9 +19,10 @@ class Carwash:
         }
     }
 
-    # counting the consumed materials and the price
 
+    # counting the consumed materials and the price
     price = 0
+
 
     # Choose the right program for washing our car
     def program_choice(self):
@@ -34,6 +35,7 @@ class Carwash:
             print("Please, choose from the given program options and enter the proper number of your choice!")
 
             self.choice = input("Which program do you choose: 1 - Pre-washing, 2 - Pressure washing, 3 - active foam or 4 - Rinsing")
+
 
     # Counting the consumption for each program
     def counter(self):
@@ -71,6 +73,7 @@ class Carwash:
 
         print("Thank you for choosing us! Have a nice day!")
         print("Bye!")
+
 
     # Making further choices available
     def next_program(self):
