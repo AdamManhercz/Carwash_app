@@ -6,46 +6,28 @@ class Carwash:
     # programs and their data
     programs = {
         "1":{
-            "name": "Pre-washing",
-            "time": 45,
-            "water": 5,
-            "foam": 0.2,
-            "price": 1.5 
+            "name": "Pre-washing", "time": 45, "water": 5, "foam": 0.2, "price": 1.5 
         },
         "2":{
-            "name": "Pressure washing",
-            "time": 60,
-            "water": 10,
-            "foam": 0.4,
-            "price": 2.5
-        },
+            "name": "Pressure washing","time": 60, "water": 10,"foam": 0.4,"price": 2.5 
+        },                                           
         "3":{
-            "name": "Active foaming",
-            "time": 60,
-            "water": 6,
-            "foam": 0.8,
-            "price": 2
+            "name": "Active foaming", "time": 60, "water": 6, "foam": 0.8, "price": 2
         },
         "4":{
-            "name": "Rinsing",
-            "time": 60,
-            "water": 6,
-            "foam": 0,
-            "price": 1
+            "name": "Rinsing", "time": 60, "water": 6, "foam": 0, "price": 1
         }
     }
 
     # counting the consumed materials and the price
 
     price = 0
-    time = 0
-    water = 0
-    foam = 0
 
-    # Lets choose the right program for washing our car
+    # Choose the right program for washing our car
     def program_choice(self):
 
-        self.choice = input("Which program do you choose: 1 - {}, 2 - {}, 3 - {} or 4 - {}:".format(self.programs["1"]["name"], self.programs["2"]["name"], self.programs["3"]["name"], self.programs["4"]["name"] ))
+        self.choice = input("Which program do you choose: 1 - {}, 2 - {}, 3 - {} or 4 - {}:"\
+        .format(self.programs["1"]["name"], self.programs["2"]["name"], self.programs["3"]["name"], self.programs["4"]["name"]))
         
         while self.choice not in {'1', '2', '3', '4'}:
 
@@ -57,31 +39,18 @@ class Carwash:
     def counter(self):
 
         if  self.choice == '1':
-            self.time += 45
-            self.water += 5
-            self.foam += 0.2
             self.price += 1.5 
         elif self.choice == '2':
-            self.time += 60
-            self.water += 10
-            self.foam += 0.4
             self.price += 2.5 
         elif self.choice == '3':
-            self.time += 60
-            self.water += 6
-            self.foam += 0.8
             self.price += 2 
         elif self.choice == '4':
-            self.time += 60
-            self.water += 6
-            self.foam += 0
             self.price += 1
 
 
     # Summarize our washing session
     def summary(self):
 
-        print(f"You have used {self.water} liter of water, {round(self.foam,2)} liter of foam in {self.time} seconds.")
         print(f"Your total: {self.price}$.")
         total =  float(input("Please insert your cash:"))
 
@@ -115,7 +84,6 @@ class Carwash:
 
         if next == 'Y':
             
-            print(f"You have used {self.water} liter of water, {round(self.foam,2)} liter of foam in {self.time} seconds.")
             print(f"Your total: {self.price}$.")  
 
             self.program_choice()
@@ -128,9 +96,9 @@ class Carwash:
             self.summary()
 
 
-carwash = Carwash()
-
 if __name__ == "__main__":
+
+    carwash = Carwash()
 
     carwash.program_choice()
 
