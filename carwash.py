@@ -6,23 +6,21 @@ class Carwash:
     # programs and their data
     programs = {
         "1":{
-            "name": "Pre-washing", "time": 45, "water": 5, "foam": 0.2, "price": 1.5 
+            "name": "Pre-washing", "price": 1.5 
         },
         "2":{
-            "name": "Pressure washing","time": 60, "water": 10,"foam": 0.4,"price": 2.5 
+            "name": "Pressure washing", "price": 2.5 
         },                                           
         "3":{
-            "name": "Active foaming", "time": 60, "water": 6, "foam": 0.8, "price": 2
+            "name": "Active foaming", "price": 2
         },
         "4":{
-            "name": "Rinsing", "time": 60, "water": 6, "foam": 0, "price": 1
+            "name": "Rinsing", "price": 1
         }
     }
 
-
-    # counting the consumed materials and the price
+    # Counting the consumed materials and the price
     price = 0
-
 
     # Choose the right program for washing our car
     def program_choice(self):
@@ -40,24 +38,22 @@ class Carwash:
     # Counting the consumption for each program
     def counter(self):
 
-        if  self.choice == '1':
-            self.price += 1.5 
-        elif self.choice == '2':
-            self.price += 2.5 
-        elif self.choice == '3':
-            self.price += 2 
-        elif self.choice == '4':
-            self.price += 1
-
+        if self.choice in self.programs:
+            self.price += self.programs[self.choice]["price"]
+        
+        print(f"{self.price}$")
 
     # Summarize our washing session
     def summary(self):
 
         print(f"Your total: {self.price}$.")
-        total =  float(input("Please insert your cash:"))
+        self.total =  float(input("Please insert your cash:"))
 
-        if total < self.price:
-            leftover =  self.price - total
+    # Observe if any change arises
+    def change(self):
+
+        if self.total < self.price:
+            leftover =  self.price - self.total
             
             left_over = float(input(f"You have left {leftover}$. Please pay the leftover amount!"))
 
@@ -66,48 +62,55 @@ class Carwash:
                 print(f"Your change: {change_left}$.")
                 print("Please, don't forget your change!")
 
-        elif total > self.price:
-            change = total - self.price
+        elif self.total > self.price:
+            change = self.total - self.price
             print(f"Your change: {change}$.")
             print("Please, don't forget your change!")
 
+    # Time to say good bye
+    def bye(self):
+
+        print("You have finished, your car is shining!")
         print("Thank you for choosing us! Have a nice day!")
         print("Bye!")
 
-
-    # Making further choices available
+    # Make further choices available
     def next_program(self):
 
-        print("Your washing session is over!")
-        next = input("Would you like to continue? Y/N:")
+        print("Your washing program is over!")
+        next = input("Would you like to continue? Y/N: ")
 
-        while next not in {"Y", "N"}:
-
+        while next not in {"Y", "N", "y", "n"}:
             next = input("Please insert the right letter! Would you like to continue? Y/N:")
 
-        if next == 'Y':
-            
-            print(f"Your total: {self.price}$.")  
-
+        if next == 'Y' or next == 'y':
+        
             self.program_choice()
             self.counter()
             self.next_program() 
 
-        elif next == "N":
-
-            print("You have finished, your car is shining!")
+        elif next == "N" or next == 'n':
             self.summary()
+            self.change()
+            self.bye()                                   
 
 
 if __name__ == "__main__":
 
-    carwash = Carwash()
+    app = Carwash()
 
-    carwash.program_choice()
+    app.program_choice()
 
-    carwash.counter()
+    app.counter()
 
-    carwash.next_program()
+    app.next_program()
+
+    
+
+    
+    
+
+    
 
     
     
