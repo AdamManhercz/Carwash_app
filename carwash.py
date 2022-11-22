@@ -41,7 +41,7 @@ class Carwash:
         if self.choice in self.programs:
             self.price += self.programs[self.choice]["price"]
         
-        print(f"{self.price}$")
+        print(self.price)
 
     # Summarize our washing session
     def summary(self):
