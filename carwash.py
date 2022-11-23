@@ -41,7 +41,7 @@ class Carwash:
         if self.choice in self.programs:
             self.price += self.programs[self.choice]["price"]
         
-        print(self.price)
+        print(f"{self.price}$")
 
     # Summarize our washing session
     def summary(self):
@@ -90,6 +90,7 @@ class Carwash:
             self.next_program() 
 
         elif next == "N" or next == 'n':
+            
             self.summary()
             self.change()
             self.bye()                                   
