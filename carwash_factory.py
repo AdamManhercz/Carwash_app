@@ -20,7 +20,7 @@ class Programs:
         return options
 
     def program_choice(self, choice):
-        """"""
+        """Return the chosen program and its data"""
 
         if choice in self.programs:
             return self.programs[choice]
@@ -47,7 +47,7 @@ class MoneyCheck:
 
 
     def change(self):
-        """Observe if any change arises """
+        """Observe if any change arises"""
 
         if self.total < self.price:
             leftover =  self.price - self.total
