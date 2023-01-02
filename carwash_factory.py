@@ -1,13 +1,14 @@
+from dataclasses import dataclass
+
+@dataclass
 class Programs:
 
-    def __init__(self) -> None:
-        """Programs data"""
-        self.programs = {
-                "1":{"name": "Pre-washing", "price": 1.5},
-                "2":{"name": "Active foaming", "price": 2},
-                "3":{"name": "Pressure washing","price": 2},
-                "4":{"name": "Rinsing", "price": 1}
-                }
+    programs = {
+            "1":{"name": "Pre-washing", "price": 1.5},
+            "2":{"name": "Active foaming", "price": 2},
+            "3":{"name": "Pressure washing","price": 2},
+            "4":{"name": "Rinsing", "price": 1}
+            }
                  
     def program_options(self):
         """List the program options"""
