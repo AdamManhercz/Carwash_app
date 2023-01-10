@@ -3,7 +3,7 @@ from dataclasses import dataclass
 @dataclass
 class Programs:
 
-    programs = {
+    programs: dict = {
             "1":{"name": "Pre-washing", "price": 1.5},
             "2":{"name": "Active foaming", "price": 2},
             "3":{"name": "Pressure washing","price": 2},
