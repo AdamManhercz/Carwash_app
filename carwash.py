@@ -5,18 +5,10 @@ class Carwash:
 
     # programs and their data
     programs = {
-        "1":{
-            "name": "Pre-washing", "price": 1.5 
-        },
-        "2":{
-            "name": "Pressure washing", "price": 2.5 
-        },                                           
-        "3":{
-            "name": "Active foaming", "price": 2
-        },
-        "4":{
-            "name": "Rinsing", "price": 1
-        }
+        "1":{"name": "Pre-washing", "price": 1.5},
+        "2":{"name": "Pressure washing", "price": 2.5},                                           
+        "3":{"name": "Active foaming", "price": 2},
+        "4":{"name": "Rinsing", "price": 1}
     }
 
     # Counting the consumed materials and the price
