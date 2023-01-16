@@ -1,15 +1,16 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class Programs:
 
     programs: dict = {
-            "1":{"name": "Pre-washing", "price": 1.5},
-            "2":{"name": "Active foaming", "price": 2},
-            "3":{"name": "Pressure washing","price": 2},
-            "4":{"name": "Rinsing", "price": 1}
-            }
-                 
+        "1": {"name": "Pre-washing", "price": 1.5},
+        "2": {"name": "Active foaming", "price": 2},
+        "3": {"name": "Pressure washing", "price": 2},
+        "4": {"name": "Rinsing", "price": 1},
+    }
+
     def program_options(self):
         """List the program options"""
 
@@ -27,10 +28,12 @@ class Programs:
             return self.programs[choice]
         print("Please select a valid program!")
 
+
 class MoneyCheck:
     """Set up the money flow"""
+
     def __init__(self) -> None:
-        
+
         self.price = 0
 
     def counter(self, choice):
@@ -39,21 +42,21 @@ class MoneyCheck:
 
         print(f"{self.price}$")
 
-    
     def summary(self):
         """Display the total cost and demand the payment"""
 
         print(f"Your total: {self.price}$.")
-        self.total =  float(input("Please insert your cash:"))
-
+        self.total = float(input("Please insert your cash:"))
 
     def change(self):
         """Observe if any change arises"""
 
         if self.total < self.price:
-            leftover =  self.price - self.total
-            
-            left_over = float(input(f"You have left {leftover}$. Please pay the leftover amount!"))
+            leftover = self.price - self.total
+
+            left_over = float(
+                input(f"You have left {leftover}$. Please pay the leftover amount!")
+            )
 
             if left_over > leftover:
                 change_left = left_over - leftover
@@ -65,24 +68,27 @@ class MoneyCheck:
             print(f"Your change: {change}$.")
             print("Please, don't forget your change!")
 
+
 class Bye:
-     
+    """Time to say good bye"""
+
     def bye(self):
-        """Time to say good bye"""
+
         print("Thank you for choosing us! Have a nice day!")
         print("Bye!")
 
+
 class Next:
+    """Make further choices available"""
 
     def program_end(self):
-        """Make further choices available"""
 
         print("Your washing program is over!")
         next = input("Would you like to continue? Y/N: ")
 
         return next
 
-       
+
 def main():
 
     programs = Programs()
@@ -95,12 +101,12 @@ def main():
     while on:
 
         choice = input(f"Which program do you choose: {programs.program_options()}?")
-        
+
         program = programs.program_choice(choice)
 
         money.counter(program)
 
-        if next.program_end() in {"Y","y"}:
+        if next.program_end() in {"Y", "y"}:
 
             on = True
 
@@ -116,8 +122,3 @@ def main():
 if __name__ == "__main__":
 
     main()
-
-    
-    
-
-
