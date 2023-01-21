@@ -12,7 +12,7 @@ class Programs:
     }
 
     def program_options(self):
-        """List the program options"""
+        """Lists the program options"""
 
         options = ""
         for p in self.programs:
@@ -22,7 +22,7 @@ class Programs:
         return options
 
     def program_choice(self, choice):
-        """Return the chosen program and its data"""
+        """Returns the chosen program and its data"""
 
         if choice in self.programs:
             return self.programs[choice]
@@ -30,26 +30,26 @@ class Programs:
 
 
 class MoneyCheck:
-    """Set up the money flow"""
+    """Sets up the money flow"""
 
     def __init__(self) -> None:
 
         self.price = 0
 
     def counter(self, choice):
-        """Count the cost"""
+        """Counts the cost"""
         self.price += choice["price"]
 
         print(f"{self.price}$")
 
     def summary(self):
-        """Display the total cost and demand the payment"""
+        """Displays the total cost and demand the payment"""
 
         print(f"Your total: {self.price}$.")
         self.total = float(input("Please insert your cash:"))
 
     def change(self):
-        """Observe if any change arises"""
+        """Observes if any change arises"""
 
         if self.total < self.price:
             leftover = self.price - self.total
@@ -69,17 +69,8 @@ class MoneyCheck:
             print("Please, don't forget your change!")
 
 
-class Bye:
-    """Time to say good bye"""
-
-    def bye(self):
-
-        print("Thank you for choosing us! Have a nice day!")
-        print("Bye!")
-
-
 class Next:
-    """Make further choices available"""
+    """Makes further actions available"""
 
     def program_end(self):
 
@@ -88,13 +79,18 @@ class Next:
 
         return next
 
+    def bye(self):
+        """Time to say good bye"""
+
+        print("Thank you for choosing us! Have a nice day!")
+        print("Bye!")
+
 
 def main():
 
     programs = Programs()
     money = MoneyCheck()
     next = Next()
-    bye = Bye()
 
     on = True
 
@@ -114,7 +110,7 @@ def main():
 
             money.summary()
             money.change()
-            bye.bye()
+            next.bye()
 
             on = False
 
