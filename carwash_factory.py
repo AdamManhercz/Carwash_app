@@ -1,17 +1,21 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from typing import Union
+
+PROGRAMS = {
+    "1": {"name": "Pre-washing", "price": 1.5},
+    "2": {"name": "Active foaming", "price": 2},
+    "3": {"name": "Pressure washing", "price": 2},
+    "4": {"name": "Rinsing", "price": 1},
+}
 
 
-@dataclass
-class Programs:
+class ProgramOptions:
+    """Introduces the available washing programs"""
 
-    programs: dict = {
-        "1": {"name": "Pre-washing", "price": 1.5},
-        "2": {"name": "Active foaming", "price": 2},
-        "3": {"name": "Pressure washing", "price": 2},
-        "4": {"name": "Rinsing", "price": 1},
-    }
+    def __init__(self) -> None:
+        self.programs = PROGRAMS
 
-    def program_options(self):
+    def program_options(self) -> str:
         """Lists the program options"""
 
         options = ""
@@ -21,7 +25,7 @@ class Programs:
 
         return options
 
-    def program_choice(self, choice):
+    def program_choice(self, choice: str) -> dict | str:
         """Returns the chosen program and its data"""
 
         if choice in self.programs:
@@ -29,26 +33,26 @@ class Programs:
         print("Please select a valid program!")
 
 
-class MoneyCheck:
+class MoneyCheck(ProgramOptions):
     """Sets up the money flow"""
 
     def __init__(self) -> None:
 
         self.price = 0
 
-    def counter(self, choice):
+    def counter(self, choice: dict) -> str:
         """Counts the cost"""
         self.price += choice["price"]
 
         print(f"{self.price}$")
 
-    def summary(self):
+    def summary(self) -> str:
         """Displays the total cost and demand the payment"""
 
         print(f"Your total: {self.price}$.")
         self.total = float(input("Please insert your cash:"))
 
-    def change(self):
+    def change(self) -> str:
         """Observes if any change arises"""
 
         if self.total < self.price:
@@ -72,35 +76,31 @@ class MoneyCheck:
 class Next:
     """Makes further actions available"""
 
-    def program_end(self):
+    def program_end(self) -> str:
 
         print("Your washing program is over!")
         next = input("Would you like to continue? Y/N: ")
 
         return next
 
-    def bye(self):
+    def bye(self) -> str:
         """Time to say good bye"""
 
         print("Thank you for choosing us! Have a nice day!")
         print("Bye!")
 
 
-def main():
-
-    programs = Programs()
-    money = MoneyCheck()
-    next = Next()
+def main(carwash: MoneyCheck, next: Next):
 
     on = True
 
     while on:
 
-        choice = input(f"Which program do you choose: {programs.program_options()}?")
+        choice = input(f"Which program do you choose: {carwash.program_options()}?")
 
-        program = programs.program_choice(choice)
+        program = carwash.program_choice(choice)
 
-        money.counter(program)
+        carwash.counter(program)
 
         if next.program_end() in {"Y", "y"}:
 
@@ -108,8 +108,8 @@ def main():
 
         else:
 
-            money.summary()
-            money.change()
+            carwash.summary()
+            carwash.change()
             next.bye()
 
             on = False
@@ -117,4 +117,7 @@ def main():
 
 if __name__ == "__main__":
 
-    main()
+    carwash = MoneyCheck()
+    next = Next()
+
+    main(carwash, next)
