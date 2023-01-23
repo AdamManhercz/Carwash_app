@@ -1,5 +1,4 @@
-from dataclasses import dataclass, field
-from typing import Union
+"""Simulate a carwashing procedure"""
 
 PROGRAMS = {
     "1": {"name": "Pre-washing", "price": 1.5},
