@@ -1,25 +1,22 @@
 """Simulate a carwashing procedure"""
 
-PROGRAMS = {
-    "1": {"name": "Pre-washing", "price": 1.5},
-    "2": {"name": "Active foaming", "price": 2},
-    "3": {"name": "Pressure washing", "price": 2},
-    "4": {"name": "Rinsing", "price": 1},
-}
-
 
 class ProgramOptions:
     """Introduces the available washing programs"""
 
     def __init__(self) -> None:
-        self.programs = PROGRAMS
+        self.programs = {
+            "1": {"name": "Pre-washing", "price": 1.5},
+            "2": {"name": "Active foaming", "price": 2},
+            "3": {"name": "Pressure washing", "price": 2},
+            "4": {"name": "Rinsing", "price": 1},
+        }
 
     def program_options(self) -> str:
         """Lists the program options"""
 
         options = ""
         for p in self.programs:
-
             options += "{}: {} ".format(p, self.programs[p]["name"])
 
         return options
@@ -41,8 +38,8 @@ class MoneyCheck(ProgramOptions):
 
     def counter(self, choice: dict) -> str:
         """Counts the cost"""
-        self.price += choice["price"]
 
+        self.price += choice["price"]
         print(f"{self.price}$")
 
     def summary(self) -> str:
@@ -57,19 +54,15 @@ class MoneyCheck(ProgramOptions):
         if self.total < self.price:
             leftover = self.price - self.total
 
-            left_over = float(
-                input(f"You have left {leftover}$. Please pay the leftover amount!")
-            )
-
-            if left_over > leftover:
-                change_left = left_over - leftover
+            # p_leftover - paid leftover
+            p_leftover = float(input(f"Please, pay the leftover amount - {leftover}$!"))
+            if p_leftover > leftover:
+                change_left = p_leftover - leftover
                 print(f"Your change: {change_left}$.")
-                print("Please, don't forget your change!")
 
         elif self.total > self.price:
             change = self.total - self.price
             print(f"Your change: {change}$.")
-            print("Please, don't forget your change!")
 
 
 class Next:
@@ -92,7 +85,6 @@ class Next:
 def main(carwash: MoneyCheck, next: Next):
 
     on = True
-
     while on:
 
         choice = input(f"Which program do you choose: {carwash.program_options()}?")
