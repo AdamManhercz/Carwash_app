@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from abc import ABC
 
 
+@dataclass
 class Flavor(ABC):
     """Represents the abtract class of a flavor"""
 
@@ -67,14 +68,12 @@ class CoffeeMachine:
     def check_resources(self, flavor: Flavor):
         """Checks the resources during the brewing"""
 
-        flavor = flavor.__dict__
-
         for resource in self.resources:
-            if self.resources[resource] >= flavor[resource]:
+            if self.resources[resource] >= flavor.__dict__[resource]:
                 if resource == "ground":
                     self.resources[resource] -= 1
                 else:
-                    self.resources[resource] -= flavor[resource]
+                    self.resources[resource] -= flavor.__dict__[resource]
             else:
                 raise ValueError(f"{resource}")
 

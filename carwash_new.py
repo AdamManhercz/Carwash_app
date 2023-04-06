@@ -5,7 +5,7 @@ class Carwash:
     """Repsresents the operations of th carwash"""
 
     def __init__(self) -> None:
-        self.total = 0
+        self.total: float = 0
 
     def add_price(self, program: Program) -> None:
         """Adds program price to total"""
@@ -15,7 +15,7 @@ class Carwash:
     def report_total(self) -> str:
         """Reports user's total"""
 
-        print(f"Your total: {self.total}$")
+        return f"Your total: {self.total}$"
 
     def get_payment(self, money: float) -> bool:
         """User pays"""
@@ -52,7 +52,7 @@ class Carwash:
                 return False
 
     def run_washing(self, program: Program):
-        """Compound operations"""
+        """Compounds operations"""
 
         self.add_price(program)
         self.report_total()

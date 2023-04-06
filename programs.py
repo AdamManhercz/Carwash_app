@@ -7,28 +7,28 @@ class Program(ABC):
     """Represents the abstract base class of the washing programs"""
 
     name: str
-    price: int
+    price: float
 
 
 @dataclass
 class PreWashing(Program):
     name: str = "Pre-washing"
-    price: int = 1.5
+    price: float = 1.5
 
 
 @dataclass
 class PressureWashing(Program):
     name: str = "Pressure washing"
-    price: int = 2.5
+    price: float = 2.5
 
 
 @dataclass
 class ActiveFoam(Program):
     name: str = "Active foaming"
-    price: int = 2
+    price: float = 2
 
 
 @dataclass
 class Rinsing(Program):
     name: str = "Rinsing"
-    price: int = 1
+    price: float = 1
